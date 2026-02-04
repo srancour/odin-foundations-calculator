@@ -37,3 +37,10 @@ function operate (first, second, operation) {
     showUser = `${value}`;
     return value;
 }
+
+function clear () {
+    firstNumber = "";
+    secondNumber = "";
+    operator = "";
+    showUser = "0";
+}
