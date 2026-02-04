@@ -19,20 +19,21 @@ let operator = "";
 let value = "";
 let showUser = "0";
 
-function operate (firstNumber, secondNumber, operator) {
-    firstNumber = Number(firstNumber);
-    secondNumber = Number(secondNumber);
-    if (operator == "+") {
-        value = add(firstNumber, secondNumber);
-    } else if (operator == "-") {
-        value = subtract(firstNumber, secondNumber);
-    } else if (operator == "*") {
-        value = multiply(firstNumber, secondNumber);
-    } else if (operator == "/") {
-        value = divide(firstNumber, secondNumber);
+function operate (first, second, operation) {
+    first = Number(first);
+    second = Number(second);
+    if (operation == "+") {
+        value = add(first, second);
+    } else if (operation == "-") {
+        value = subtract(first, second);
+    } else if (operation == "*") {
+        value = multiply(first, second);
+    } else if (operation == "/") {
+        value = divide(first, second);
     }
     firstNumber = `${value}`;
     secondNumber = "";
     operator = "";
     showUser = `${value}`;
+    return value;
 }
