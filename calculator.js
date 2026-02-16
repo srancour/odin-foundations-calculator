@@ -19,7 +19,7 @@ function divide (number1, number2) {
     }
 };
 
-let firstNumber = "";
+let firstNumber = "0";
 let secondNumber = "";
 let operator = "";
 let value = "";
@@ -50,9 +50,19 @@ function operate (first, second, operation) {
 }
 
 function clear () {
-    firstNumber = "";
-    secondNumber = "";
-    operator = "";
-    showUser = "0";
+    switch (secondNumber) {
+        case "":
+            firstNumber = "0";
+            operator = "";
+            showUser = "0";
+            break;
+        default:
+            firstNumber = "0";
+            secondNumber = "";
+            operator = "";
+            showUser = "0";
+            // change clear button to AC instead of C
+            break;
+    }
 }
 log(operate("1", "2", "/"));
