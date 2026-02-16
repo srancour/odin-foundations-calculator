@@ -65,4 +65,37 @@ function clear () {
             break;
     }
 }
-log(operate("1", "2", "/"));
+
+let numberButtons = [...document.querySelectorAll("button.number")];
+
+let output = document.getElementById("show-user");
+
+numberButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        let buttonText = event.target.textContent;
+        let outputText = output.textContent;
+        switch (showUser) {
+            case ("0"):
+                switch (buttonText) {
+                    case ("."):
+                        showUser += buttonText;
+                        break;
+                    default:
+                        showUser = buttonText;
+                        break;
+                }
+                output.textContent = showUser;
+                break;
+            default:
+                if (buttonText == "." && showUser.includes(".")) {
+
+                } else {
+                    showUser += buttonText;
+                    output.textContent = showUser;
+                }
+                break;
+        }
+    });
+});
+
+// log(operate("1", "2", "/"));
