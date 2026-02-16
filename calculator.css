@@ -4,3 +4,42 @@
 body {
     margin: 0;
 }
+
+.calculator {
+    display: flex;
+    flex-direction: column;
+    width: 15em;
+    border: .15em solid black;
+    margin: 2em;
+    align-content: stretch;
+}
+
+#input {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+    margin: .25em;
+    border: .15em solid black;
+}
+#input span {
+    margin: .125em;
+}
+
+.control-section {
+    display: flex;
+    flex-direction: row;
+    /* flex-wrap: wrap; */
+    margin: .25em;
+}
+
+.controls {
+    display: flex;
+    flex-direction: row;
+    flex-basis: 100%;
+    flex-wrap: wrap;
+}
+
+button {
+    padding: .25em;
+    flex-basis: 25%;
+}
