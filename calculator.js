@@ -43,7 +43,7 @@ function operate (first, second, operation) {
             value = divide(first, second);
             break;
     }
-    firstNumber = `${value}`;
+    firstNumber = "";
     secondNumber = "";
     operator = "";
     showUser = `${value}`;
@@ -127,5 +127,24 @@ operatorButtons.forEach(button => {
         output.textContent = showUser;
     })
 })
+
+let equalsButton = document.getElementById("equals");
+
+equalsButton.addEventListener(
+    "click", (event) => {
+            switch (showUser.length) {
+                // Check if there has been another number put in after the operator
+                case (firstNumber.length + operator.length):
+                    log("Can't do that");
+                    break;
+                default:
+                    // set secondNumber to everything after the firstNumber and operator
+                    secondNumber = showUser.slice(firstNumber.length + operator.length);
+                    operate(firstNumber, secondNumber, operator);
+                    clearButton.textContent = "AC";
+                    output.textContent = showUser;
+            } 
+        }
+);
 
 // log(operate("1", "2", "/"));
