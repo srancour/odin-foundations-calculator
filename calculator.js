@@ -47,25 +47,38 @@ function operate (first, second, operation) {
     secondNumber = "";
     operator = "";
     showUser = `${value}`;
-    return value;
+    return;
 }
 
+let clearButton = document.getElementById("clear");
+
 function clear () {
-    switch (secondNumber) {
+    switch (firstNumber) {
         case "":
-            firstNumber = "";
-            operator = "";
             showUser = "0";
             break;
         default:
-            firstNumber = "";
-            secondNumber = "";
-            operator = "";
-            showUser = "0";
-            // change clear button to AC instead of C
+            switch (clearButton.textContent) {
+                case "C":
+                    showUser = firstNumber + operator;
+                    break;
+                default:
+                    firstNumber = "";
+                    operator = "";
+                    showUser = "0";
+                    break;
+            }
             break;
     }
+    clearButton.textContent = "AC";
+    output.textContent = showUser;
 }
+
+clearButton.addEventListener(
+    "click", (event) => {
+        clear();
+        }
+);
 
 let numberButtons = [...document.querySelectorAll("button.number")];
 
@@ -74,6 +87,9 @@ let output = document.getElementById("show-user");
 numberButtons.forEach(button => {
     button.addEventListener("click", (event) => {
         let buttonText = event.target.textContent;
+        if (clearButton.textContent === "AC") {
+            clearButton.textContent = "C";
+        };
         switch (showUser) {
             case ("0"):
                 switch (buttonText) {
@@ -107,6 +123,8 @@ operatorButtons.forEach(button => {
         log(operator);
         firstNumber = showUser;
         log(firstNumber);
+        showUser = firstNumber + operator;
+        output.textContent = showUser;
     })
 })
 
