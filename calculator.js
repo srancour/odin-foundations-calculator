@@ -19,7 +19,8 @@ function divide (number1, number2) {
     }
 };
 
-let firstNumber = "0";
+// this needs to be set to nothing to check if there's anything here because a user could use 0 as their first number and go straight to the operator
+let firstNumber = "";
 let secondNumber = "";
 let operator = "";
 let value = "";
@@ -35,7 +36,7 @@ function operate (first, second, operation) {
         case "-":
             value = subtract(first, second);
             break;
-        case "*":
+        case "x":
             value = multiply(first, second);
             break;
         case "/":
@@ -52,12 +53,12 @@ function operate (first, second, operation) {
 function clear () {
     switch (secondNumber) {
         case "":
-            firstNumber = "0";
+            firstNumber = "";
             operator = "";
             showUser = "0";
             break;
         default:
-            firstNumber = "0";
+            firstNumber = "";
             secondNumber = "";
             operator = "";
             showUser = "0";
@@ -73,7 +74,6 @@ let output = document.getElementById("show-user");
 numberButtons.forEach(button => {
     button.addEventListener("click", (event) => {
         let buttonText = event.target.textContent;
-        let outputText = output.textContent;
         switch (showUser) {
             case ("0"):
                 switch (buttonText) {
@@ -97,5 +97,17 @@ numberButtons.forEach(button => {
         }
     });
 });
+
+let operatorButtons = [...document.querySelectorAll("button.operator")];
+
+operatorButtons.forEach(button => {
+    button.addEventListener("click", (event) => {
+        let buttonText = event.target.textContent;
+        operator = buttonText;
+        log(operator);
+        firstNumber = showUser;
+        log(firstNumber);
+    })
+})
 
 // log(operate("1", "2", "/"));
