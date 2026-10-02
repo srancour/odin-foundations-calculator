@@ -137,6 +137,15 @@ let operatorButtons = [...document.querySelectorAll("button.operator")];
 operatorButtons.forEach(button => {
     button.addEventListener("click", (event) => {
         let buttonText = event.target.textContent;
+        switch (operator) {
+            case "":
+                break;
+            default:
+                secondNumber = showUser.slice(firstNumber.length + operator.length);
+                operate(firstNumber, secondNumber, operator);
+                clearButton.textContent = "AC";
+                break;    
+        }
         operator = buttonText;
         firstNumber = showUser;
         showUser = firstNumber + operator;
