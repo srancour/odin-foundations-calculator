@@ -116,6 +116,10 @@ numberButtons.forEach(button => {
         if (clearButton.textContent === "AC") {
             clearButton.textContent = "C";
         };
+        if (value != "") {
+            showUser = "0";
+            value = "";
+        }
         switch (showUser) {
             case ("0"):
                 switch (buttonText) {
@@ -186,6 +190,7 @@ equalsButton.addEventListener(
             switch (firstNumber) {
                 case "":
                     clearButton.textContent = "AC";
+                    value = showUser;
                     break;
                 default:
                     switch (showUser.length) {
