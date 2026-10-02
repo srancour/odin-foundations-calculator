@@ -103,11 +103,29 @@ numberButtons.forEach(button => {
                 output.textContent = showUser;
                 break;
             default:
-                if (buttonText == "." && showUser.includes(".")) {
+                switch (firstNumber) {
+                    case "":
+                        if (buttonText == "." && showUser.includes(".")) {
 
-                } else {
-                    showUser += buttonText;
-                    output.textContent = showUser;
+                        } else {
+                            showUser += buttonText;
+                            output.textContent = showUser;
+                        }
+                        break;
+                    default:
+                        secondNumber = showUser.slice(firstNumber.length + operator.length);
+                        if (buttonText == "." && secondNumber == "") {
+                            showUser += "0" + buttonText;
+                            output.textContent = showUser;
+                        }
+                        else if (buttonText == "." && secondNumber.includes(".")) {
+
+                        }
+                        else {
+                            showUser += buttonText;
+                            output.textContent = showUser;
+                        }
+                        break;
                 }
                 break;
         }
