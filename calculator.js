@@ -120,9 +120,7 @@ operatorButtons.forEach(button => {
     button.addEventListener("click", (event) => {
         let buttonText = event.target.textContent;
         operator = buttonText;
-        log(operator);
         firstNumber = showUser;
-        log(firstNumber);
         showUser = firstNumber + operator;
         output.textContent = showUser;
     })
@@ -132,18 +130,25 @@ let equalsButton = document.getElementById("equals");
 
 equalsButton.addEventListener(
     "click", (event) => {
-            switch (showUser.length) {
-                // Check if there has been another number put in after the operator
-                case (firstNumber.length + operator.length):
-                    log("Can't do that");
+            switch (firstNumber) {
+                case "":
+                    clearButton.textContent = "AC";
                     break;
                 default:
-                    // set secondNumber to everything after the firstNumber and operator
-                    secondNumber = showUser.slice(firstNumber.length + operator.length);
-                    operate(firstNumber, secondNumber, operator);
-                    clearButton.textContent = "AC";
-                    output.textContent = showUser;
-            } 
+                    switch (showUser.length) {
+                        // Check if there has been another number put in after the operator
+                        case (firstNumber.length + operator.length):
+                            break;
+                        default:
+                            // set secondNumber to everything after the firstNumber and operator
+                            secondNumber = showUser.slice(firstNumber.length + operator.length);
+                            operate(firstNumber, secondNumber, operator);
+                            clearButton.textContent = "AC";
+                            output.textContent = showUser;
+                            break;
+                    }
+                break;
+            }  
         }
 );
 
