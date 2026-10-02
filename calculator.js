@@ -13,6 +13,7 @@ function divide (number1, number2) {
     switch (number2){
         case 0:
             log("Can't divide by 0");
+            return "Error, worm hole opened"
             break;
         default:
             return number1 / number2;
