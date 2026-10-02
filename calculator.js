@@ -49,6 +49,7 @@ function operate (first, second, operation) {
     secondNumber = "";
     operator = "";
     showUser = `${value}`;
+    value = "";
     return;
 }
 
@@ -167,19 +168,29 @@ let operatorButtons = [...document.querySelectorAll("button.operator")];
 operatorButtons.forEach(button => {
     button.addEventListener("click", (event) => {
         let buttonText = event.target.textContent;
-        switch (operator) {
-            case "":
-                break;
-            default:
-                secondNumber = showUser.slice(firstNumber.length + operator.length);
-                operate(firstNumber, secondNumber, operator);
-                clearButton.textContent = "AC";
-                break;    
+        if (operator != "" &&showUser == firstNumber + operator) {
+            operator = buttonText;
+            showUser = firstNumber + operator;
+            output.textContent = showUser;
+            log (operator);    
         }
-        operator = buttonText;
-        firstNumber = showUser;
-        showUser = firstNumber + operator;
-        output.textContent = showUser;
+        else {
+            switch (operator) {
+                case "":
+                    break;
+                default:
+                    secondNumber = showUser.slice(firstNumber.length + operator.length);
+                    operate(firstNumber, secondNumber, operator);
+                    clearButton.textContent = "AC";
+                    break;    
+            }
+            operator = buttonText;
+            log (operator);
+            firstNumber = showUser;
+            log (firstNumber);
+            showUser = firstNumber + operator;
+            output.textContent = showUser;
+        }
     })
 })
 
