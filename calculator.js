@@ -26,6 +26,8 @@ let operator = "";
 let value = "";
 let showUser = "0";
 
+let output = document.getElementById("show-user");
+
 function operate (first, second, operation) {
     first = Number(first);
     second = Number(second);
@@ -80,9 +82,33 @@ clearButton.addEventListener(
         }
 );
 
-let numberButtons = [...document.querySelectorAll("button.number")];
+let backspaceButton = document.getElementById("backspace");
 
-let output = document.getElementById("show-user");
+backspaceButton.addEventListener(
+    "click", (event) => {
+        switch (showUser) {
+            case "0":
+                clearButton.textContent = "AC";
+                break;
+            default:
+                let removed = showUser.slice(-1);
+                if (showUser.length == 1) {
+                    showUser = "0";
+                    clearButton.textContent = "AC";
+                }
+                else {
+                    showUser = showUser.slice(0, -1);
+                }
+                if (["+", "-", "x", "/"].includes(removed)) {
+                    operator = "";
+                    firstNumber = "";
+                    clearButton.textContent = "AC";
+                }
+                output.textContent = showUser;
+        }
+    }
+)
+let numberButtons = [...document.querySelectorAll("button.number")];
 
 numberButtons.forEach(button => {
     button.addEventListener("click", (event) => {
