@@ -48,6 +48,9 @@ function operate (first, second, operation) {
     firstNumber = "";
     secondNumber = "";
     operator = "";
+    if (typeof value === "number") {
+        value = Number(value.toPrecision(12));
+    }
     showUser = `${value}`;
     return;
 }
