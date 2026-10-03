@@ -165,13 +165,12 @@ numberButtons.forEach(button => {
 let negativeButton = document.getElementById("negative");
 
 negativeButton.addEventListener("click", (event) => {
-    // if first number is not set and if first showUser is -, remove it, else add - to the beginning. If first number is set and if first showUser after first number/operator is -, remove it, else add - to the beginning
     switch (firstNumber) {
         case "":
             if (showUser.startsWith("-")) {
-                showUser = showUser.slice(1);
+                showUser = showUser.slice(1); //remove negative sign from the first number
             } else {
-                showUser = "-" + showUser;
+                showUser = "-" + showUser; // add negative sign to first number
             }
             output.textContent = showUser;
             break;
@@ -179,9 +178,9 @@ negativeButton.addEventListener("click", (event) => {
             let prefix = firstNumber + operator;
             let second = showUser.slice(prefix.length);
             if (second.startsWith("-")) {
-                second = second.slice(1);
+                second = second.slice(1); // remove negative sign from second number
             } else {
-                second = "-" + second;
+                second = "-" + second; //add negative sign to second number
             }
             showUser = prefix + second;
             output.textContent = showUser;

@@ -43,3 +43,6 @@ button {
     padding: .25em;
     flex-basis: 25%;
 }
+button.zero {
+    flex-basis: 50%;
+}
