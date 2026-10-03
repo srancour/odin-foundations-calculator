@@ -49,7 +49,6 @@ function operate (first, second, operation) {
     secondNumber = "";
     operator = "";
     showUser = `${value}`;
-    value = "";
     return;
 }
 
@@ -210,6 +209,7 @@ operatorButtons.forEach(button => {
                     clearButton.textContent = "AC";
                     break;    
             }
+            value = "";
             operator = buttonText;
             firstNumber = showUser;
             showUser = firstNumber + operator;
