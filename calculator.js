@@ -243,3 +243,29 @@ equalsButton.addEventListener(
             }  
         }
 );
+
+// Keyboard support
+
+const keyMap = {
+    "0": "0", "1": "1", "2": "2", "3": "3", "4": "4",
+    "5": "5", "6": "6", "7": "7", "8": "8", "9": "9",
+    ".": "decimal",
+    "+": "add",
+    "-": "subtract",
+    "*": "multiply",
+    "x": "multiply",
+    "/": "divide",
+    "Enter": "equals",
+    "=": "equals",
+    "Backspace": "backspace",
+    "Escape": "clear",
+};
+
+document.addEventListener("keydown", (event) =>{
+    let buttonPressed = keyMap[event.key];
+    if (buttonPressed === undefined) {
+        return;
+    }
+    event.preventDefault();
+    document.getElementById(buttonPressed).click();
+});
