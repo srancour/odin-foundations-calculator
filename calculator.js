@@ -12,7 +12,6 @@ function multiply (number1, number2) {
 function divide (number1, number2) {
     switch (number2){
         case 0:
-            log("Can't divide by 0");
             return "Error, worm hole opened"
             break;
         default:
@@ -164,6 +163,33 @@ numberButtons.forEach(button => {
     });
 });
 
+let negativeButton = document.getElementById("negative");
+
+negativeButton.addEventListener("click", (event) => {
+    // if first number is not set and if first showUser is -, remove it, else add - to the beginning. If first number is set and if first showUser after first number/operator is -, remove it, else add - to the beginning
+    switch (firstNumber) {
+        case "":
+            if (showUser.startsWith("-")) {
+                showUser = showUser.slice(1);
+            } else {
+                showUser = "-" + showUser;
+            }
+            output.textContent = showUser;
+            break;
+        default:
+            let prefix = firstNumber + operator;
+            let second = showUser.slice(prefix.length);
+            if (second.startsWith("-")) {
+                second = second.slice(1);
+            } else {
+                second = "-" + second;
+            }
+            showUser = prefix + second;
+            output.textContent = showUser;
+            break;
+    }
+});
+
 let operatorButtons = [...document.querySelectorAll("button.operator")];
 
 operatorButtons.forEach(button => {
@@ -172,8 +198,7 @@ operatorButtons.forEach(button => {
         if (operator != "" &&showUser == firstNumber + operator) {
             operator = buttonText;
             showUser = firstNumber + operator;
-            output.textContent = showUser;
-            log (operator);    
+            output.textContent = showUser;   
         }
         else {
             switch (operator) {
@@ -186,9 +211,7 @@ operatorButtons.forEach(button => {
                     break;    
             }
             operator = buttonText;
-            log (operator);
             firstNumber = showUser;
-            log (firstNumber);
             showUser = firstNumber + operator;
             output.textContent = showUser;
         }
@@ -221,5 +244,3 @@ equalsButton.addEventListener(
             }  
         }
 );
-
-// log(operate("1", "2", "/"));
